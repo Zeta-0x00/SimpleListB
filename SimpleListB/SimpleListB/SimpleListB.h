@@ -7,17 +7,17 @@ class SimpleListB
 
 	};
 public:
-	SimpleListB();
-	~SimpleListB();
+	//SimpleListB();
+	//~SimpleListB();
 };
 
 
 
-SimpleListB::SimpleListB()
+/*SimpleListB::SimpleListB()
 {
 }
 
 
 SimpleListB::~SimpleListB()
 {
-}
+}*/

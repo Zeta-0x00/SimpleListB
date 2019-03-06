@@ -113,18 +113,48 @@ bool List<T>::remove(int pos, T & x)
 template<class T>
 bool List<T>::pop(T & x)
 {
-	return false;
+	link p = primero;
+	if (!p)
+		return false;
+	else {
+		x = p->elemento;
+		primero = p->siguiente;
+		delete p;
+	}
 }
 
 template<class T>
 bool List<T>::pop_back(T & x)
 {
-	return false;
+	link p = primero;
+	link c = p;
+	if (!p)
+		return false;
+	else {
+		while (p->siguiente) {
+			c = p;
+			p = p->siguiente;
+		}
+		c->siguiente = p->siguiente;
+		x = p->elemento;
+		delete p;
+	}
 }
 
 template<class T>
 bool List<T>::get(int pos, T & element)
 {
+	link p = primero;
+	if (p == NULL || pos < 0 || pos >= tam)
+		return false;
+	else {
+		while (pos != 0 && p->siguiente) {
+			p = p->siguiente;
+			pos--;
+		}
+		elemen = p->elemento;
+		return true;
+	}
 	return false;
 }
 

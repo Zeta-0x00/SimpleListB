@@ -1,4 +1,8 @@
 #pragma once
+#ifndef SimpleList_h
+#define SimpleList_h
+
+
 #include <iostream>
 #include <string>
 using std::string;
@@ -167,7 +171,7 @@ bool List<T>::get(int pos, T & element)
 			p = p->siguiente;
 			pos--;
 		}
-		elemen = p->elemento;
+		element = p->elemento;
 		return true;
 	}
 	return false;
@@ -233,3 +237,4 @@ List<T>::~List() {
 		primero = p;
 	}
 }
+#endif // !SimpleList_h

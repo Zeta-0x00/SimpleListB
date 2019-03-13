@@ -16,7 +16,7 @@ class SimpleListB
 		//end region
 		//region Contructors
 		Nodo() :Full{ false }, Next{ nullptr }{}
-		Nodo(struct* X)Full { false }, Next{ X }{}
+		Nodo(struct Nodo* X)Full { false }, Next{ X }{}
 		//end region
 	};
 	typedef struct Nodo* Link;

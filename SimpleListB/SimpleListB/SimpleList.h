@@ -2,11 +2,12 @@
 #ifndef SimpleList_h
 #define SimpleList_h
 
-
 #include <iostream>
 #include <string>
+
 using std::string;
 using std::cout;
+
 template <class T>
 class List {
 private:
@@ -34,12 +35,12 @@ public:
 	void push_back(T x);
 	void insertar(T x, int pos);
 	void insertarR(T x, int pos);
-	bool remove(int pos, T& x);	
+	bool remove(int pos, T& x);
 	bool pop(T& x);
 	bool pop_back(T& x);
 	bool get(int pos, T& element);
-	bool get_front(T& element);		
-	bool get_back(T& element);		
+	bool get_front(T& element);
+	bool get_back(T& element);
 	void print();
 	~List();
 
@@ -139,6 +140,7 @@ bool List<T>::pop(T & x)
 		x = p->elemento;
 		primero = p->siguiente;
 		delete p;
+		return true;
 	}
 }
 
@@ -157,6 +159,7 @@ bool List<T>::pop_back(T & x)
 		c->siguiente = p->siguiente;
 		x = p->elemento;
 		delete p;
+		return true;
 	}
 }
 
@@ -180,7 +183,7 @@ bool List<T>::get(int pos, T & element)
 template<class T>
 bool List<T>::get_front(T & element)
 {
-	if(!primero)
+	if (!primero)
 		return false;
 	else
 	{
@@ -192,7 +195,7 @@ bool List<T>::get_front(T & element)
 template<class T>
 bool List<T>::get_back(T & element)
 {
-	if(!primero)
+	if (!primero)
 		return false;
 	else
 	{

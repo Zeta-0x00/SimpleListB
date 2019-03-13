@@ -69,13 +69,8 @@ void SimpleListB<T, N>::push_front(T x)
 {
 	Link p = Head;
 	if (!Head) {
-		Head = new Nodo();p = Head;
-	}
-	if(Tam==N) {
-		Head = new Nodo(p);
-		p->Full = true;
-		Size++;
-		Tam = 0;
+		Head = new Nodo();
+		p = Head;
 	}
 	if (Tam==0){
 	for (int i = 0; i < N; i++) { p->element[i] = NULL; }
@@ -88,6 +83,12 @@ void SimpleListB<T, N>::push_front(T x)
 		}
 	}Tam++;
 	Head->element[0] = x;
+	if (Tam == N) {
+		Head = new Nodo(p);
+		p->Full = true;
+		Size++;
+		Tam = 0;
+	}
 }
 template<class T, int N>
 void SimpleListB<T, N>::push_back(T x)

@@ -74,35 +74,34 @@ void SimpleListB<T, N>::push_front(T x)
 	}
 	else {
 		if (Size%N != 0) {
-		T aux = x;
-		while (p) {
-			if (p->Full) { aux = p->element[N - 1]; }
-			int i = N - 1;
-			while (i > -1) {
-				p->element[i] = p->element[i - 1];
-				i--;
+			int j = Size;
+			Link c = Head;
+			while (j>0) {
+				c = c->Next;
 			}
-			p->element[0] = x;
-			x = aux;
-			p = p->Next;
-			//if (p) { p->element[0] = aux; }
+			cout << *c->element;
+			T aux = x;
+			while (p) {
+				if (p->Full) { aux = p->element[N - 1]; }
+				int i = N - 1;
+				while (i > -1) {
+					p->element[i] = p->element[i - 1];
+					i--;
+				}
+				p->element[0] = aux;
+				p = p->Next;
+				if (p) { p->element[0] = aux; }
+			}
 		}
-	}
-
 		if (Size%N == 0) {
 			Head = new Nodo(Head);
 			Head->element[0] = x;
-			p = Head;
-			while (p->Next) {
-				for (int i = 1; i < N; i++)p->element[i] = p->Next->element[i - 1];
-				p->Next->element[0] = p->Next->element[N - 1];
-				for (int i = 1; i < N; i++)p->Next->element[i] = NULL;
-				p = p->Next;
-			}
+			for (int i = 1; i < N; i++)Head->element[i] = Head->Next->element[i - 1];
+			Head->Next->element[0]= Head->Next->element[N - 1];
+			for (int i = 1; i < N; i++)Head->Next->element[i] = NULL;
 			Head->Full = true;
 		}
 	}
-
 	++Size;
 }
 template<class T, int N>

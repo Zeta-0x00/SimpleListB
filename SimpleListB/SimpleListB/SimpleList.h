@@ -8,7 +8,7 @@
 using std::string;
 using std::cout;
 
-template <class T>
+template <typename T>
 class List {
 private:
 	struct Nodo {
@@ -46,7 +46,7 @@ public:
 
 };
 
-template<class T>
+template<typename T>
 void List<T>::insertR(link & p, T x, int pos) {
 	if (p == NULL)
 		p = new Nodo(x);
@@ -58,20 +58,20 @@ void List<T>::insertR(link & p, T x, int pos) {
 	}
 }
 
-template<class T>
+template<typename T>
 List<T>::List(string nombre) {
 	nombreLista = nombre;
 	primero = NULL;
 	tam = 0;
 }
 
-template <class T>
+template <typename T>
 void List<T>::push_front(T x) {
 	primero = new Nodo(x, primero);
 	tam++;
 }
 
-template<class T>
+template<typename T>
 void List<T>::push_back(T x) {
 	if (!primero)
 		primero = new Nodo(x, primero);
@@ -83,7 +83,7 @@ void List<T>::push_back(T x) {
 	tam++;
 }
 
-template<class T>
+template<typename T>
 void List<T>::insertar(T x, int pos) {
 	if (!primero) {
 		primero = new Nodo(x);
@@ -103,13 +103,13 @@ void List<T>::insertar(T x, int pos) {
 	tam++;
 }
 
-template<class T>
+template<typename T>
 void List<T>::insertarR(T x, int pos) {
 	insertR(primero, x, pos);
 	tam++;
 }
 
-template<class T>
+template<typename T>
 bool List<T>::remove(int pos, T & x)
 {
 	link p = primero;
@@ -130,7 +130,7 @@ bool List<T>::remove(int pos, T & x)
 	return false;
 }
 
-template<class T>
+template<typename T>
 bool List<T>::pop(T & x)
 {
 	link p = primero;
@@ -144,7 +144,7 @@ bool List<T>::pop(T & x)
 	}
 }
 
-template<class T>
+template<typename T>
 bool List<T>::pop_back(T & x)
 {
 	link p = primero;
@@ -163,7 +163,7 @@ bool List<T>::pop_back(T & x)
 	}
 }
 
-template<class T>
+template<typename T>
 bool List<T>::get(int pos, T & element)
 {
 	link p = primero;
@@ -180,7 +180,7 @@ bool List<T>::get(int pos, T & element)
 	return false;
 }
 
-template<class T>
+template<typename T>
 bool List<T>::get_front(T & element)
 {
 	if (!primero)
@@ -192,7 +192,7 @@ bool List<T>::get_front(T & element)
 	}
 }
 
-template<class T>
+template<typename T>
 bool List<T>::get_back(T & element)
 {
 	if (!primero)
@@ -209,7 +209,7 @@ bool List<T>::get_back(T & element)
 	}
 }
 
-template<class T>
+template<typename T>
 void List<T>::print() {
 	cout << nombreLista << " = [";
 	if (primero) {
@@ -224,12 +224,12 @@ void List<T>::print() {
 	cout << "]";
 }
 
-template<class T>
+template<typename T>
 int List<T>::len() {
 	return tam;
 }
 
-template<class T>
+template<typename T>
 List<T>::~List() {
 	link p;
 	while (primero) {

@@ -9,21 +9,24 @@ class SimpleListB
 {
 	struct Nodo
 	{
-		//region Properties
-		bool Full;	//Indicator if the array is fully
-		T element[N];	//Array to N elements
-		struct Nodo* Next; //Pointer to next node
+		//region Node Properties
+		bool Full;		      //Indicator if the array is fully
+		T element[N];	     //Array to N elements
+		struct Nodo* Next;  //Pointer to next node
 		//end region
-		//region Contructors
+
+		//region Node Contructors
 		Nodo() : Full{ false }, Next{ nullptr }, element{NULL}{}
 		Nodo(struct Nodo* X) : Full { false }, Next{ X }, element{ NULL }{}
 		//end region
 	};
-	typedef struct Nodo* Link;
+
+	typedef struct Nodo* Link;	//Definition of pointer to Node as Link
+	
 	//region Properties
-	Link Head;
-	int Size;
-	string ListName;
+	Link Head;			// Pointer to first node to the list
+	int Size;			// quantity to elements into the list
+	string ListName;	// Name to the list
 	//end region
 public:
 	//region Declarations
@@ -72,6 +75,10 @@ SimpleListB<T, N>::~SimpleListB()
 }
 template<typename T, int N>
  void SimpleListB<T, N>::push_front(T x)
+	 /*
+	 * On this method has been inserted a element
+	 * to type T into the first position to the list
+	 */
 {
 	Link p = Head;
 	if (!Head) {
@@ -112,6 +119,10 @@ template<typename T, int N>
 template<typename T, int N>
  void SimpleListB<T, N>::push_back(T x)
 {
+	 /*
+	 * On this method has been inserted a element of
+	 * type T into the final position to the list
+	 */
 	Link p=Head;
 	if (!Head) { Head = new Nodo(); p = Head; Size++;  Head->element[0] = x;
 	}
@@ -133,6 +144,11 @@ template<typename T, int N>
 template<typename T, int N>
  void SimpleListB<T, N>::insert(T x, int pos)
 {
+	 /*
+	 * On this method has been inserted a element of
+	 * type T in a position "pos" into the vector 
+	 * to the someone Node to the list
+	 */
 	if (!Head) {
 		Head = new Nodo();
 		for (int i = 0; i < N; i++) { Head->element[i] = NULL; }
@@ -146,6 +162,11 @@ template<typename T, int N>
 template<typename T, int N>
  bool SimpleListB<T, N>::remove(int pos, T& x)
 {
+	 /*
+	 * With this method has posible delete someone 
+	 * element to the list designed by the position
+	 * "pos" and return this
+	 */
 	if (!Head)
 		return false;
 	else if (pos > -1 && pos < Size)
@@ -166,7 +187,10 @@ template<typename T, int N>
 template<typename T, int N>
  bool SimpleListB<T, N>::pop(T& x)
 {
-	
+	/*
+	* This method delete the first element
+	* to the list and return this
+	*/
 	if (!Head) {
 		return false;
 	}
@@ -194,6 +218,10 @@ template<typename T, int N>
 template<typename T, int N>
  bool SimpleListB<T, N>::pop_back(T& x)
 {
+	 /*
+	 * This method remove the last element
+	 * to the list and return this
+	 */
 	if(!Head)
 		return false;
 	else
@@ -214,6 +242,12 @@ template<typename T, int N>
 template<typename T, int N>
  bool  SimpleListB<T, N>::get(int pos, T& x)
 {
+	 /*
+	 * This Methos search someone element
+	 * to the list using this indicator 
+	 * to position called "pos" and
+	 * return the elemnt
+	 */
 	if (!Head)
 		return false;
 	else if (pos > -1 && pos < Size)
@@ -232,6 +266,10 @@ template<typename T, int N>
 template<typename T, int N>
  bool SimpleListB<T, N>::get_front(T& x)
 {
+	 /*
+	 * This Method return the 
+	 * fisrt element to the list
+	 */
 	if(!Head)
 		return false;
 	else
@@ -243,6 +281,11 @@ template<typename T, int N>
 template<typename T, int N>
  bool SimpleListB<T, N>::get_back(T& x)
 {
+	 /*
+	 * This Method return the 
+	 * element ubicated on the last
+	 * position to the list
+	 */
 	if (!Head)
 		return false;
 	else
@@ -261,6 +304,13 @@ template<typename T, int N>
 template<typename T, int N>
  void SimpleListB<T, N>::print()
 {
+	 /*
+	 * A Simple Method that just
+	 * move a pointer by the Nodes to
+	 * the list to print the all
+	 * elements to the list with a
+	 * format that do more easy to read
+	 */
 	cout << ListName << " = [";
 	if (Head) {
 		Link p = Head;
